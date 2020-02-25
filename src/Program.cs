@@ -12,11 +12,10 @@ namespace Destin.CodeLou.ExerciseProjec
         
         static void Main(string[] args)
         {
-            do
+            while (stillRunning)
             {
                 MainMenu();
             }
-            while (stillRunning);
         }
 
         static void MainMenu()
@@ -62,8 +61,20 @@ namespace Destin.CodeLou.ExerciseProjec
 
             while (stillAdding)
             {
+                var studentRecord = new Student();
                 Console.WriteLine("Enter Student Id");
-                var studentId = Convert.ToInt32(Console.ReadLine());
+                while (true)
+                {
+                    if (Int32.TryParse(Console.ReadLine(), out var studentId))
+                    {
+                        studentRecord.StudentId = studentId;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid Student ID");
+                    }
+                }
                 Console.WriteLine("Enter First Name");
                 var studentFirstName = Console.ReadLine();
                 Console.WriteLine("Enter Last Name");
@@ -73,18 +84,35 @@ namespace Destin.CodeLou.ExerciseProjec
                 Console.WriteLine("Enter Last Class Completed");
                 var lastClass = Console.ReadLine();
                 Console.WriteLine("Enter Last Class Completed Date in format MM/dd/YYYY");
-                var lastCompletedOn = DateTimeOffset.Parse(Console.ReadLine());
+                while (true)
+                {
+                    if (DateTimeOffset.TryParse(Console.ReadLine(), out var lastCompletedOn))
+                    {
+                        studentRecord.LastClassCompletedOn = lastCompletedOn;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid date");
+                    }
+                }
                 Console.WriteLine("Enter Start Date in format MM/dd/YYYY");
-                var startDate = DateTimeOffset.Parse(Console.ReadLine());
-
-                var studentRecord = new Student();
-                studentRecord.StudentId = studentId;
+                while (true)
+                {
+                    if (DateTimeOffset.TryParse(Console.ReadLine(), out var startDate))
+                    {
+                        studentRecord.StartDate = startDate;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter a valid date");
+                    }
+                }
                 studentRecord.FirstName = studentFirstName;
                 studentRecord.LastName = studentLastName;
                 studentRecord.ClassName = className;
-                studentRecord.StartDate = startDate;
                 studentRecord.LastClassCompleted = lastClass;
-                studentRecord.LastClassCompletedOn = lastCompletedOn;
                 Console.WriteLine($"Student Id | Name |  Class "); ;
                 Console.WriteLine($"{studentRecord.StudentId} | {studentRecord.FirstName} {studentRecord.LastName} | {studentRecord.ClassName} "); ;
                 Console.ReadKey();
