@@ -9,3 +9,5 @@ C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\obj\Debug\netcoreapp3.1\De
 C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\obj\Debug\netcoreapp3.1\Destin.CodeLou.ExerciseProjec.AssemblyInfo.cs
 C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\obj\Debug\netcoreapp3.1\Destin.CodeLou.ExerciseProjec.dll
 C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\obj\Debug\netcoreapp3.1\Destin.CodeLou.ExerciseProjec.pdb
+C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Destin\Desktop\c#projects\CSharpProject1\src\obj\Debug\netcoreapp3.1\Destin.CodeLou.ExerciseProjec.csproj.CopyComplete

@@ -1,12 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using src;
+using System.Text.Json;
+using System.IO;
 
 namespace Destin.CodeLou.ExerciseProjec
 {
     class Program
     {
-        static List<Student> studentList = new List<Student>();
+        static string _studentRepositoryPath = $"{AppDomain.CurrentDomain.BaseDirectory}\\sutdent.json";
+        static List<Student> studentList = File.Exists(_studentRepositoryPath) ? Read() : new List<Student>();
+
+        static async void Save()
+        {
+            using (var file = File.CreateText(_studentRepositoryPath))
+            {
+                await file.WriteAsync(JsonSerializer.Serialize(studentList));
+            }
+        }
+
+        static List<Student> Read()
+        {
+            return JsonSerializer.Deserialize<List<Student>>(File.ReadAllText(_studentRepositoryPath));
+        }
 
         static bool stillRunning = true;
         
@@ -118,6 +134,7 @@ namespace Destin.CodeLou.ExerciseProjec
                 Console.ReadKey();
 
                 studentList.Add(studentRecord);
+                Save();
 
                 Console.WriteLine("Would you like to add another student? \"Yes\" or \"No\"");
                 var answer = Console.ReadLine();
